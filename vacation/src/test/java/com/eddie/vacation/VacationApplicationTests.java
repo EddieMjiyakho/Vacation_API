@@ -9,5 +9,4 @@ class VacationApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
