@@ -125,7 +125,7 @@ Each endpoint was verified for correct request/response behavior, including:
 
 
 ## 📑 Project Report
-A detailed report about the project design, implementation, and testing is available in the [`docs/Project_Report.pdf`](./docs/Project_Report.pdf).
+A detailed report about the project design, implementation, and testing is available in the [`docs/Project_Report.pdf`](.vacation/docs/Project_Report.pdf).
 
 
 
