@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-@Data
+@Data // auto-generates getters, setters, equals, hashCode, toString
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestStatusUpdateDto {

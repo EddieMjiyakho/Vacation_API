@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
-@Service
+@Service // marking business logic as bean
 public class VacationService {
 
     private final VacationRequestRepository requestRepository;
@@ -27,7 +27,8 @@ public class VacationService {
         this.employeeRepository = employeeRepository;
     }
 
-    @Transactional
+    @Transactional // ensures database operations run in transaction to commit/role back
+                   // autimatically
     public VacationRequest createRequest(VacationRequestDto requestDto) {
         requestDto.validateDates();
 
@@ -70,6 +71,11 @@ public class VacationService {
 
         if (!manager.isManager()) {
             throw new UnauthorizedException("Only managers can approve/reject requests");
+        }
+
+        // prevent managers from updating their own requests
+        if (request.getAuthor().getId().equals(manager.getId())) {
+            throw new UnauthorizedException("Managers cannot approve or reject their own requests");
         }
 
         if ("approved".equals(statusUpdate.getStatus())) {

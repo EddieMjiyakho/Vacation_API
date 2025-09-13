@@ -12,7 +12,7 @@ import java.time.temporal.ChronoUnit;
 @Data
 public class VacationRequestDto {
     @NotNull(message = "Author ID is required")
-    @Positive(message = "Author ID must be a positive number")
+    @Positive(message = "Author ID must be a positive number") // Validation annotations: enforce rules on incoming data
     private Long authorId;
 
     @NotNull(message = "Start date is required")

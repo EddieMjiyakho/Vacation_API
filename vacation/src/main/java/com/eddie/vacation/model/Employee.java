@@ -28,7 +28,7 @@ public class Employee {
     @Column(name = "remaining_vacation_days", nullable = false)
     private int remainingVacationDays = 30;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // EAGER always loads immediately
     @JsonIgnore
     private List<VacationRequest> vacationRequests;
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.List;
 
-@Repository
+@Repository //marking data access objects in this class as bean
 public interface VacationRequestRepository extends JpaRepository<VacationRequest, Long> {
 
    List<VacationRequest> findByAuthor(Employee employee);

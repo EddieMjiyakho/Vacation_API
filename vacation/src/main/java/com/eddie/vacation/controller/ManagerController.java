@@ -13,18 +13,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/manager")
+@RestController // combines @Controller + @ResponseBody (returns JSON/XML)
+@RequestMapping("/api/manager") // maps http requests to controller methods
 public class ManagerController {
 
     private final VacationService vacationService;
 
-    @Autowired
+    @Autowired // constructor injection
     public ManagerController(VacationService vacationService) {
         this.vacationService = vacationService;
     }
 
-    @GetMapping("/requests")
+    @GetMapping("/requests") // can fillter with status
     public ResponseEntity<?> getAllRequests(
             @RequestParam(required = false) String status) {
         try {
@@ -37,7 +37,7 @@ public class ManagerController {
         }
     }
 
-    @GetMapping("/{managerId}/requests")
+    @GetMapping("/{managerId}/requests") // get all pending requests, manager only
     public ResponseEntity<?> getPendingRequests(@PathVariable Long managerId) {
         try {
             List<VacationRequest> pendingRequests = vacationService.getRequestsForManager(managerId);
@@ -59,7 +59,7 @@ public class ManagerController {
         }
     }
 
-    @GetMapping("/overlapping-requests")
+    @GetMapping("/overlapping-requests") // get overlapping or clashing dates from this [start-end, dates]
     public ResponseEntity<?> findOverlappingRequests(
             @RequestParam String startDate,
             @RequestParam String endDate) {
@@ -95,6 +95,7 @@ public class ManagerController {
         }
     }
 
+    // wrapper for error messages always returns JSON object
     public static class ErrorResponse {
         private final String message;
 

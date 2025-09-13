@@ -13,6 +13,7 @@ public class VacationApplication {
 		SpringApplication.run(VacationApplication.class, args);
 	}
 
+	// if frontend runs on a different port, to avoid blocked request
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
